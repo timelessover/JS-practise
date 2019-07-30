@@ -1,3 +1,5 @@
+//需求：set添加，get获取，has查找，remove删除，clear删除所有，getAll获取全部
+
 /**
  *
  * 序列化与反序列化
