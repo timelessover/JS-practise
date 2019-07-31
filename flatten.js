@@ -8,13 +8,3 @@ const flatten = function (arr, depth = 1) {
     }, [])
     return res
 }
-
-
-function flatten(arr) {
-    if (depth <= 0) return arr
-    while (arr.some(item => Array.isArray(item))) {
-        arr = [].concat(...arr);
-    }
-
-    return arr;
-}
