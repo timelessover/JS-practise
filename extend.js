@@ -9,7 +9,7 @@ const extend = function () {
     //第二个开始向目标对象合拼元素，不存在key则直接加入，存在则覆盖值
     for (let i = 1; i < length; i++) {
         options = arguments[i];
-        if (options != null) {
+        if (options !== null) {
             for (key in options) {
                 copy = options[key];
                 if (copy !== undefined) {
