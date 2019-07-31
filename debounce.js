@@ -1,8 +1,10 @@
-//需求: 触发事件，在 n 秒内再次触发，按照最后一次触发事件时间 n 秒后执行
-//1. wait 倒计时 fn事件函数 denbounce(fn,time) 指向this =》事件对象, 参数arguments =》event参数
-//2. 优化:立即执行 立刻执行函数，然后等到停止触发 n 秒后，才可以重新触发执行.
-//3. 优化:返回值
-//4. 优化：取消
+/* 
+    需求: 触发事件，在 n 秒内再次触发，按照最后一次触发事件时间 n 秒后执行
+    1. wait 倒计时 fn事件函数 denbounce(fn,time) 指向this =》事件对象, 参数arguments =》event参数
+    2. 优化:立即执行 立刻执行函数，然后等到停止触发 n 秒后，才可以重新触发执行.
+    3. 优化:返回值
+    4. 优化：取消
+*/
 const denbounce = function (fn, wait, immediate) {
     let timer, result;
     function debounced() {
