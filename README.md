@@ -12,3 +12,5 @@
 + lazyMan
 + promise
 + vue响应式原理
++ equal函数
++ shuffle函数
