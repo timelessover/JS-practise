@@ -2,39 +2,32 @@
  * Vue的响应式原理 
  **/
 
-  
-  function observer (obj){
-    if( !obj || typeof obj !== 'object') return 
-  
-    Object.keys(obj).forEach((key)=>{
-       reactive(obj,key,obj[key])
-    })
-  }
-  function reactive(obj,key,val){
-     Object.defineProperty(obj,key,{
-       configurable:true,
-       enumerable: true,
-       get: function(){
-         return val
-       },
-       set:function(newVal){
-          if (newVal === val) return
-          val = newVal
-          console.log('newvalue',val)
-       }
-     })
-  }
+function observer(_obj) {
+  if (!_obj || typeof _obj !== 'object') return
+  return new Proxy(_obj, {
+    get(obj, prop) {
+      console.log('2')
+      return obj[prop]
+    },
+    set(obj, prop, newVal) {
+      console.log('1')
+      if (newVal === obj[prop]) return
+      obj[prop] = newVal
+    }
+  })
+}
 
-  class Vue {
-    constructor(options) {
-        this._data = options.data;
-        observer(this._data);
-    }
+
+class Vue {
+  constructor(options) {
+    this.$data = observer(options.data);
   }
-  
-  let vm = new Vue({
-    data: {
-        test: "test"
-    }
-  });
-  vm._data.test = "test2";
+}
+
+let vm = new Vue({
+  data: {
+    test: "test"
+  }
+});
+vm.$data.test = 'xxx'
+vm.$data.test
