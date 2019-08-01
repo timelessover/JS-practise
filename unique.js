@@ -24,3 +24,24 @@ let unique = function(){
     })
     return arr
 }
+//利用reduce和hash多维去重
+let hash = {};
+
+function uniqueBy(arr, key){
+    return arr.reduce(function(previousValue, currentValue){
+        //存在的则存入hash，
+        hash[currentValue[key]] ? '' : hash[currentValue[key]] = true && previousValue.push(currentValue);
+        return previousValue
+    }, []);
+}
+//去除name相同的对象
+const uniqueArr = uniqueBy([{name: 'zs', age: 15}, {name: 'lisi'}, {name: 'zs'}], 'name');
+
+console.log(uniqueArr);
+
+let a = {name:'chris'}
+
+let a = {}
+a.__proto__ = c.prototype
+c.apply(a)
+return a
