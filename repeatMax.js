@@ -6,13 +6,12 @@ function findMax(str) {
     let res = {}
     let _res = {}
     let max = 0
-    //>2的处理
     for (let i = 0; i < str.length; i++) {
         if (str[i] === str[i - 1]) {
             arr.push(str[i])
         }
     }
-    //=1的处理
+    //最大值为1的处理
     if(!arr.length){
        let _arr = str.split('')
        for(key in _arr){
