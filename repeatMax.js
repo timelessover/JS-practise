@@ -1,33 +1,44 @@
 // 'abbkejsbcccwqaa' => {'c':3}
 //  相邻两数省于最多
-function findMax(str){
-    let tem = []
+function findMax(str) {
+    if(!str) return
+    let arr = []
     let res = {}
     let _res = {}
     let max = 0
-    let arr = str.split("")
-    for(let i = 0; i<arr.length;i++){
-        if(arr[i] === arr[i-1]){
-            tem.push(arr[i])
+    //>2的处理
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === str[i - 1]) {
+            arr.push(str[i])
         }
+    }
+    //=1的处理
+    if(!arr.length){
+       let _arr = str.split('')
+       for(key in _arr){
+           _res[_arr[key]] = 1
+       }
+       return _res
     }
     //记录出现个数
-    for(key in tem){
-        if(!res[tem[key]]){
-            res[tem[key]] = 2
-        }else{
-            res[tem[key]]++
+    for (key in arr) {
+        if (!res[arr[key]]) {
+            res[arr[key]] = 2
+        } else {
+            res[arr[key]]++
         }
     }
+
     //获得最大值
-    for(key in res){
-        if(res[key] > max){
+    for (key in res) {
+        if (res[key] > max ) {
             max = res[key]
+            
         }
     }
-    for(key in res){
-        if(res[key] === max){
-           _res[key] = max
+    for (key in res) {
+        if (res[key] === max) {
+                _res[key] = max
         }
     }
     return _res
