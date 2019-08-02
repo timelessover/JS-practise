@@ -4,39 +4,38 @@
  * **/
 //发布订阅模式
 class Dep {
-    constructor() {
+    constructor () {
         this.subs = [];
     }
-    //添加一个观测对象
-    addSub(sub) {
-        this.subs.push(sub)
+
+    addSub (sub) {
+        this.subs.push(sub);
     }
-    notify() {
-        const subs = this.subs.slice()//copy一份
-        for (let i = 0, l = subs.length; i < l; i++) {
-            subs[i].update()//更新视图
-        }
+
+    notify () {
+        this.subs.forEach((sub) => {
+            sub.update();
+        })
     }
 }
 class Watcher {
-    constructor(vm, cb) {
-        this.cb = cb;
-        this.vm = vm;
-        this.cb.call(this.vm);//首次渲染
+    constructor () {
+        Dep.target = this;
     }
-    update() {
-        this.cb.call(this.vm);
+
+    update () {
+        console.log("视图更新啦～");
     }
 }
 //双向数据绑定，view控制model层,model层控制view层，model多余数据改变，不触发视图层更新
-function observer(_obj,watch) {
+function observer(_obj) {
    
     if (!_obj || typeof _obj !== 'object') return
     let dep = new Dep()
-    dep.addSub(watch);
     //proxy可以劫持更多类型
     return new Proxy(_obj, {
         get(obj, prop) {
+            dep.addSub(Dep.target);
             return obj[prop]
         },
         set(obj, prop, newVal) {
@@ -50,9 +49,9 @@ function observer(_obj,watch) {
 
 class Vue {
     constructor(options) {
-        let watch = new Watcher(options.data,()=>console.log('2'))
-        //第一次挂载数据
-        this.$data = observer(options.data,watch);
+        this.$data = observer(options.data);
+        new Watcher();
+        console.log('render~', this.$data.test1);
     }
 }
 let vm = new Vue({
@@ -62,4 +61,5 @@ let vm = new Vue({
     }
 });
 vm.$data.test1 = '2'
-vm.$data.test1 = '4'
+
+
