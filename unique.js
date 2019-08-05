@@ -1,4 +1,16 @@
 //需求：数组内容去重
+//最基础的方法
+let unique = (arr) => {
+    let hash = {}
+    let newArr = []
+    for (key in arr) {
+        if (!hash[arr[key]]) {
+            hash[arr[key]] = 1
+            newArr.push(arr[key])
+        }
+    }
+    return newArr
+}
 // ES6 set数据结构中不存在重复元素的特性
 let unique = arr => [...new Set(arr)]
 // ES6 map hash结构过滤掉不存在 map 中并赋值 value 为 1 的值
@@ -38,10 +50,3 @@ function uniqueBy(arr, key){
 const uniqueArr = uniqueBy([{name: 'zs', age: 15}, {name: 'lisi'}, {name: 'zs'}], 'name');
 
 console.log(uniqueArr);
-
-let a = {name:'chris'}
-
-let a = {}
-a.__proto__ = c.prototype
-c.apply(a)
-return a

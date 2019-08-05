@@ -1,5 +1,5 @@
 /** 
- * Vue的响应式原理
+ * Vue的响应式原理Proxy版本
  **/
 
 function observer(_obj) {
@@ -29,4 +29,3 @@ let vm = new Vue({
   }
 });
 vm.$data.test = 'xxx'
-vm.$data.test

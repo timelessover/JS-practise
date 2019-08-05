@@ -2,7 +2,6 @@
  * 1.利用队列先入先出的特性，进行节点遍历，广度优先，就是横向优先。
  * @param {*} node 
  */
-
 let DeepFirst = (node) => {
     // 记录节点
     let nodes = []
