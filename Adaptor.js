@@ -20,7 +20,7 @@ const newCityInterface = {
 }
 
 // 这时候就可采用适配者模式
-const adaptor = (function (oldCity) {
+const adaptor = (function () {
     const obj = {}
     for (let city of CityOld) {
         obj[city.name] = city.id
