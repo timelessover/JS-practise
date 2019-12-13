@@ -22,3 +22,6 @@
 + vue依赖收集
 + 设计模式
 + compose函数
++ 模拟 setInterval和 requestAnimationFrame
++ call,apply,bind函数
++ rededuce实现 map和 filter

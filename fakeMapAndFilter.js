@@ -10,6 +10,7 @@ var test = (item) => {
 var arr = [1, 2, 3]
 map(arr, test, this)
 
+// filter实现
 const filter = (arr, fn, context) => {
     return arr.reduce((acc, cur, index, arr) => {
         return fn.call(context, cur, index, arr) ? [...acc, cur] : [...acc]
