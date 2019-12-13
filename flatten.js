@@ -2,9 +2,8 @@
 //console.log(flatten(arr)) // [1, 2, 3, 4]
 //优化：可选择平铺深度
 const flatten = function (arr, depth = 1) {
-    let res = arr.reduce((prev, next) => {
-        if (depth <= 0) return arr
+    if (depth <= 0) return arr
+    return arr.reduce((prev, next) => {
         return prev.concat(Array.isArray(next) ? flatten(next, depth - 1) : next)
     }, [])
-    return res
 }

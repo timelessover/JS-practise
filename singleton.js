@@ -9,9 +9,6 @@ const singleton = function(name){
     this.name = name
     this.instance = null
 }
-singleton.prototype.getName = function(){
-    return this.name
-}
 singleton.getInstance = function(name){
     if(!this.instance){
         this.instance = new singleton(name)
