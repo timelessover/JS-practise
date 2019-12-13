@@ -24,4 +24,4 @@
 + compose函数
 + 模拟 setInterval和 requestAnimationFrame
 + call,apply,bind函数
-+ rededuce实现 map和 filter
++ reduce实现 map和 filter
